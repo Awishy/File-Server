@@ -58,7 +58,7 @@ public class Main {
         ) {
             while (isRunning.get()) {
                 Session session = new Session(server, server.accept());
-                session.start();
+                new Thread(session).start();
             }
         } catch (SocketException e) {
             // EXIT
@@ -70,7 +70,7 @@ public class Main {
     }
 
 
-    private static class Session extends Thread {
+    private static class Session implements Runnable {
         private final ServerSocket serverSocket;
         private final Socket socket;
 

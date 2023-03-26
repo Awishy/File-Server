@@ -124,7 +124,7 @@ public class Client {
             case "2": // PUT
                 String fileName = getFileName("Enter name of the file:");
                 File file = new File(CLIENT_FILES_PATH, fileName);
-                if (!file.exists()) {
+                if (fileName.isEmpty() || !file.exists()) {
                     System.out.println("File '" + fileName + "' doesn't exist.");
                     return false;
                 }
